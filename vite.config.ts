@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import dotenv from 'dotenv';
 import { defineConfig } from 'vite';
 import environment from 'vite-plugin-environment';
-
+import tailwindcss from '@tailwindcss/vite';
 dotenv.config();
 
 export default defineConfig({
@@ -29,12 +29,9 @@ export default defineConfig({
   },
   plugins: [
     react(),
+    tailwindcss(),
     environment('all', { prefix: 'CANISTER_' }),
     environment('all', { prefix: 'DFX_' }),
   ],
-  cacheDir: '../node_modules/.vite',
-  test: {
-    environment: 'jsdom',
-    setupFiles: 'setupTests.ts',
-  },
+  cacheDir: '../node_modules/.vite'
 });
